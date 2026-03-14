@@ -107,7 +107,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.91,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1jxqw")
 }, {
 "duration": 1.0,
@@ -186,12 +186,13 @@ offset_bottom = -8.0
 max_value = 5.0
 rounded = true
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 scale = Vector2(1, 1.03125)
 sprite_frames = SubResource("SpriteFrames_7lmhl")
 animation = &"run"
-frame_progress = 0.45947582
+frame_progress = 0.44304138
 
 [node name="DashCooldown" type="Timer" parent="CharacterBody2D"]
 wait_time = 5.0

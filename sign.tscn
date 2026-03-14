@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnef3dfe24aes"]
+
+[ext_resource type="Script" uid="uid://dbpj5hcqmrf7b" path="res://area_2d.gd" id="1_w2mlg"]
+[ext_resource type="Texture2D" uid="uid://brldhrs4oq2f6" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_q3tny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbceu"]
+atlas = ExtResource("2_q3tny")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8cgb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbceu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfcv5"]
+size = Vector2(12, 13)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykq24"]
+font_size = 10
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="AreaRoot" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_w2mlg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_e8cgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_mfcv5")
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_left = -22.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = -3.0
+text = "Read Me"
+label_settings = SubResource("LabelSettings_ykq24")
+metadata/_edit_use_anchors_ = true

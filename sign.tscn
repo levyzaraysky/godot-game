@@ -39,10 +39,25 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_mfcv5")
 
 [node name="Label" type="Label" parent="Area2D"]
-offset_left = -22.0
+offset_left = -29.0
 offset_top = -17.0
-offset_right = 20.0
+offset_right = 30.0
 offset_bottom = -3.0
-text = "Read Me"
+text = "F to interact"
 label_settings = SubResource("LabelSettings_ykq24")
 metadata/_edit_use_anchors_ = true
+
+[node name="Instructions" type="TextEdit" parent="Area2D"]
+visible = false
+offset_left = -109.0
+offset_top = -61.0
+offset_right = 139.0
+offset_bottom = 58.0
+text = "Climb Up, and Don't fall :)
+E - Dash
+WASD - Movement
+F - Interact"
+editable = false
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

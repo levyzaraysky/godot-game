@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhqhom2eg36x" path="res://Touchscreen/jump.tga" id="3_vjvcp"]
 
 [node name="Touchscreen" type="Node2D"]
+visible = false
 position = Vector2(0, 627)
 
 [node name="left" type="TouchScreenButton" parent="."]

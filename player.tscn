@@ -172,7 +172,7 @@ shape = SubResource("CapsuleShape2D_onrkg")
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(2, 2)
 limit_left = -556
-limit_top = -251
+limit_top = -2000
 limit_right = 766
 limit_bottom = -14
 limit_smoothed = true

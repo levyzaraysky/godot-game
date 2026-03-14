@@ -8,6 +8,11 @@ var speed = 150.0
 const JUMP_VELOCITY = -400.0
 const DASH_LENGTH = 5
 
+# Begin Coords
+var changes_allowed = true
+var start_x
+var start_y
+
 # Dashing
 var dash_length = DASH_LENGTH
 var dash_cooldown = 6
@@ -29,6 +34,16 @@ func start_dash():
 
 
 func _physics_process(delta: float) -> void:
+	# Starting Coords
+	if changes_allowed:
+		start_x = position.x
+		start_y = position.y
+		changes_allowed = false
+		
+	# Reset to starting coords
+	if Input.is_action_just_pressed("restart"):
+		position.x = start_x
+		position.y = start_y
 	
 	# Remove Cooldown Bar if Ready
 	if can_dash == true:
@@ -43,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	dash_status.value = dash_cooldown_timer.wait_time - dash_cooldown_timer.time_left
 	if not _animated_sprite.is_playing():
 		_animated_sprite.play("idle")
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

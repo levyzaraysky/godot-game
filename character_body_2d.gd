@@ -3,10 +3,18 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var dash_cooldown_timer = $DashCooldown
 @onready var dash_status = $Camera2D/DashCooldownBar
+@onready var default_cam = $Camera2D
+@onready var end_cam = $ExpandedCam
 
 var speed = 150.0
 const JUMP_VELOCITY = -400.0
 const DASH_LENGTH = 5
+
+# Stages
+const grasslands = -750.0
+const deserts = -1360.0
+const magmas = -2415.0
+const victory = -3200.0
 
 # Begin Coords
 var changes_allowed = true
@@ -34,6 +42,12 @@ func start_dash():
 
 
 func _physics_process(delta: float) -> void:
+	#Camera Switching
+	if global_position.y > victory:
+		default_cam.make_current()
+	if global_position.y < victory and is_on_floor():
+		end_cam.make_current()
+	
 	# Starting Coords
 	if changes_allowed:
 		start_x = position.x
@@ -56,6 +70,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Cooldown Bar
 	dash_status.value = dash_cooldown_timer.wait_time - dash_cooldown_timer.time_left
+	
+	# Run Comp
 	if not _animated_sprite.is_playing():
 		_animated_sprite.play("idle")
 	
@@ -80,8 +96,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Dash
 	if Input.is_action_just_pressed("dash") and can_dash and not is_dashing:
-		start_dash()
-		dash_cooldown_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timer_timeout"))
+		if global_position.x + 50 < 745.0 and global_position.x - 50 > -545.0:
+			start_dash()
+			dash_cooldown_timer.connect("timeout", Callable(self, "_on_dash_cooldown_timer_timeout"))
 	
 	# Sprite rotation
 	if Input.is_action_just_pressed("left"):

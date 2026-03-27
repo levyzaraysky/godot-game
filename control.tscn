@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bsysack4ygeib"]
+
+[ext_resource type="Script" uid="uid://conadc5pf0cjp" path="res://control.gd" id="1_62e2m"]
+[ext_resource type="Texture2D" uid="uid://6yb82r22ivni" path="res://Screenshot from 2026-03-27 14-14-00.png" id="2_ee4bf"]
+[ext_resource type="FontFile" uid="uid://ci54r3a18ka7u" path="res://PressStart2P-Regular.ttf" id="2_qtu10"]
+[ext_resource type="AnimationLibrary" uid="uid://beuvjxwsnu12l" path="res://global.res" id="4_ee4bf"]
+
+[node name="Control" type="Control" unique_id=1125525755]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62e2m")
+
+[node name="ScreenshotFrom20260327141400" type="Sprite2D" parent="." unique_id=281359402]
+position = Vector2(570, 325)
+texture = ExtResource("2_ee4bf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=699415782]
+modulate = Color(1, 0.7058824, 0.5529412, 1)
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(1, 0.7062754, 0.55363506, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1263620940]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 261.0
+offset_right = 885.0
+offset_bottom = 332.0
+alignment = 1
+
+[node name="StartButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=717767290]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=1091562872]
+layout_mode = 2
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=594237654]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 40.0
+offset_right = 909.0
+offset_bottom = 254.0
+theme_override_colors/default_color = Color(3.6098064e-07, 0.28249216, 0.37993914, 1)
+theme_override_fonts/normal_font = ExtResource("2_qtu10")
+theme_override_font_sizes/normal_font_size = 64
+text = "Little Knight Adventures"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=390287493]
+libraries/global = ExtResource("4_ee4bf")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

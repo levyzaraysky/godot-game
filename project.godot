@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="My-Platformer"
-run/main_scene="uid://cqow47bch5ocs"
+run/main_scene="uid://bsysack4ygeib"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

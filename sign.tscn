@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnef3dfe24aes"]
+[gd_scene format=3 uid="uid://bnef3dfe24aes"]
 
 [ext_resource type="Script" uid="uid://dbpj5hcqmrf7b" path="res://area_2d.gd" id="1_w2mlg"]
 [ext_resource type="Texture2D" uid="uid://brldhrs4oq2f6" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_q3tny"]
+[ext_resource type="FontFile" uid="uid://ci54r3a18ka7u" path="res://PressStart2P-Regular.ttf" id="3_q3tny"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbceu"]
 atlas = ExtResource("2_q3tny")
@@ -26,19 +27,19 @@ font_size = 10
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="AreaRoot" type="Node2D"]
+[node name="SignRoot" type="Node2D" unique_id=1826016199]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=348147723]
 script = ExtResource("1_w2mlg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1145180082]
 sprite_frames = SubResource("SpriteFrames_e8cgb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1197816988]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_mfcv5")
 
-[node name="Label" type="Label" parent="Area2D"]
+[node name="Label" type="Label" parent="Area2D" unique_id=1072918016]
 offset_left = -29.0
 offset_top = -17.0
 offset_right = 30.0
@@ -47,17 +48,38 @@ text = "F to interact"
 label_settings = SubResource("LabelSettings_ykq24")
 metadata/_edit_use_anchors_ = true
 
-[node name="Instructions" type="TextEdit" parent="Area2D"]
+[node name="Instructions_Old" type="TextEdit" parent="Area2D" unique_id=1100955327]
 visible = false
-offset_left = -109.0
-offset_top = -61.0
-offset_right = 139.0
-offset_bottom = 58.0
+offset_left = 92.0
+offset_top = -154.0
+offset_right = 388.0
+offset_bottom = -73.0
+theme_override_fonts/font = ExtResource("3_q3tny")
+theme_override_font_sizes/font_size = 10
 text = "Climb Up, and Don't fall :)
 E - Dash
-WASD - Movement
+WASD / Arrow Keys - Movement
+Space, W, Up - Jump
 F - Interact"
 editable = false
+virtual_keyboard_enabled = false
+
+[node name="Instructions" type="RichTextLabel" parent="Area2D" unique_id=1428355507]
+visible = false
+offset_left = -114.0
+offset_top = -114.0
+offset_right = 115.0
+offset_bottom = -44.0
+theme_override_constants/line_separation = 6
+theme_override_fonts/normal_font = ExtResource("3_q3tny")
+theme_override_font_sizes/normal_font_size = 8
+text = "Climb Up, and Don't fall :)
+E - Dash
+WASD / Arrow Keys - Movement
+Space, W, Up - Jump
+F - Interact"
+fit_content = true
+scroll_active = false
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
